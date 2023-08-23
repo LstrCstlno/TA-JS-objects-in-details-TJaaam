@@ -13,8 +13,64 @@
 For each different ways of creating object write different solutions.
 
 - Prototypal pattern of object creation (Put methods inside an object and create object using Object.create)
+
+```js
+let methods = {
+  isAnswerCorrect: function(index){
+    return (index === this.correctAnswerIndex)
+  },
+  getCorrectAnswer: function(){
+    return this.options[this.correctAnswerIndex]
+  }
+}
+
+function Question(title, options, correctAnswerIndex){
+  let object = Object.create(methods);
+  object["title"] = title;
+  object["options"] = options;
+  object["correctAnswerIndex"] = correctAnswerIndex;
+  return object;
+}
+
+```
 - Pseudoclassical Pattern (Put methods inside F.prototype and use `new` to call function)
+
+```js
+
+Question.prototype = {
+  isAnswerCorrect: function(index){
+    return (index === this.correctAnswerIndex)
+  },
+  getCorrectAnswer: function(){
+    return this.options[this.correctAnswerIndex]
+  }
+}
+
+function Question(title, options, correctAnswerIndex){
+  this["title"] = title;
+  this["options"] = options;
+  this["correctAnswerIndex"] = correctAnswerIndex;
+}
+
+```
 - Create using class
+```js
+class Question  {
+  constructor(title, options, correctAnswerIndex){
+  this["title"] = title;
+  this["options"] = options;
+  this["correctAnswerIndex"] = correctAnswerIndex;
+  }
+  isAnswerCorrect(index){
+  return (index === this.correctAnswerIndex)
+  }
+  getCorrectAnswer(){
+  return this.options[this.correctAnswerIndex]
+  }
+}
+
+```
+
 - Write test by creating two objects also test both methods.
 
 ### To test use the following data
