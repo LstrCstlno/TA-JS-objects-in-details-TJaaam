@@ -110,5 +110,6 @@ console.log(user2)
 
 
 console.log(user1.nameContains("ek Cas"))
+console.log(user1, user2)
 ```
 
