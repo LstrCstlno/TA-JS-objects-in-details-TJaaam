@@ -2,6 +2,7 @@
 
 - Create a class named `Square` which accepts one parameter `side` and will set two property `width` and `height` to the value of `side`.
 
+
 - Add a method named `description` that will alert a message saying `The square is ${width} x ${height}`
 
 - Create another method named `calcArea` that will return the area of the square.
@@ -17,6 +18,41 @@
 - Check the `area` getter method on both square.
 
 - Check the `isEqual` method and pass the two instance you created above.
+
+```js
+class Square{
+    constructor(side){
+        this.width = side;
+        this.height = side;
+    }
+    description(){
+        alert(`The square is ${this.width} x ${this.height}`)
+    }
+    calcArea(){
+        return (this.width*this.height)
+    }
+    get area(){
+        return (this.width*this.height)
+    }
+    set area(area){
+        let side = Math.sqrt(area);
+        this.width = side;
+        this.height = side;
+    }
+    static isEqual(instance1, instance2){
+        return(instance1.area === instance2.area)
+    }
+}
+
+let s1 = new Square(6)
+let s2 = new Square(20)
+let s3 = new Square(6)
+
+console.log(s1)
+console.log(s3)
+console.log(Square.isEqual(s1, s2))
+
+```
 
 ## User Class
 
@@ -37,3 +73,42 @@
 - Check the `fullName` using getter
 
 - Check the `nameContains` method
+
+```js
+class User{
+    constructor(firstName, lastName){
+      this.firstName = firstName;
+      this.lastName = lastName;
+    }
+    get fullName(){
+        return `${this.firstName} ${this.lastName}`
+    }
+    set fullName(fullName){
+        if(fullName.length < 5){
+            alert `Full name should be more than 5 characters`
+        }else{
+            let newName = fullName.split(" ")
+            this.firstName = newName[0]
+            this.lastName = newName[1]
+        }
+    }
+    nameContains(string){
+        return this.fullName.includes(string)
+    }
+}
+
+let user1 = new User("Lester", "Castelino");
+let user2 = new User("Weiss", "Dogson")
+
+console.log(user1)
+console.log(user2)
+
+console.log(user1.fullName = "Derek Castelino")
+console.log(user2.fullName = "Weiss")
+console.log(user1)
+console.log(user2)
+
+
+console.log(user1.nameContains("ek Cas"))
+```
+
