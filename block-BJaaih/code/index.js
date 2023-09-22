@@ -62,13 +62,11 @@ new array and in the new array the index of the elements will be shuffled (rando
 Make sure it does not the changes the original array.
 
 */
-Array.prototype.shuffle = function(cb) {
-  let splice = []
-  for(let i = 0; i < this.length; i++){
-    splice.push(this.splice(Math.floor(Math.random(this.length), 1)))
-  }
-  return splice
+let numbers = [1, 2, 3, 4, 2, 3, 6, 7, 7]
+Array.prototype.shuffle = function() {
+  return this.sort(() => Math.random() - 0.5)
 }
+
 // Test to check the shuffle method (It will return different output every time you call)
 console.log(numbers.shuffle());
 console.log(numbers.shuffle());
@@ -111,7 +109,7 @@ Array.prototype.intersection = function(array) {
       newArray.push(filter[i])
     }
   }
-  return newArray
+  return newArray;
 }
 
 // Test to check the shuffle method (It will return different output every time you call)
@@ -124,14 +122,15 @@ and split the array into groups the length of size. If array can't be split even
 chunk will be the remaining elements. `length` should default to 1.
 */
 Array.prototype.chunk = function(length = 1) {
-  let arr = []
-  for (let index = 0; this.length > 1; index++) {
-    arr.push(this.splice(0,length))
-    if (length > this.length) {
-      arr.push(this.splice(0,1))
+  let arr = [...this]
+  let newArr = [];
+  for (let index = 0; arr.length > 1; index++) {
+    newArr.push(arr.splice(0,length))
+    if (length > arr.length) {
+      newArr.push(arr.splice(0,1))
     }
   }
-  return arr;
+  return newArr;
 }
 
 // Test to check the shuffle method (It will return different output every time you call)
