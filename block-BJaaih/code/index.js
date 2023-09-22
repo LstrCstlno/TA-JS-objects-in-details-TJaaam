@@ -6,10 +6,11 @@
 
 
 Array.prototype.myMap = function(cb) {
-  this.reduce((acc, cv) => {
-  acc = acc.concat(cb(cv))
-  return acc;
-  }, [])
+  let final = [];
+  for(let i = 0; i < this.length; i++){
+      final.push(cb(this[i]))
+  }
+  return final
 }
 // Test the myMap function you created above
 
@@ -33,11 +34,14 @@ console.log(capitalWords); // it should be 'Quick Brown Fox Jumped Over A Lazy D
 2. Add a method named `myFilter` to Array.prototype. myFilter should behave similar to Array.filter.
 After adding the function test it using the code below.
 */
-Array.prototype.myMap = function(cb) {
-  this.reduce((acc, cv) => {
-  acc = acc.concat(cb(cv))
-  return acc;
-  }, [])
+Array.prototype.myFilter = function(cb) {
+  let final = [];
+  for(let i = 0; i < this.length; i++){
+    if (cb(this[i])) {
+      final.push(this[i])
+    }
+  }
+  return final
 }
 
 let even = numbers.myFilter(function (num) {
@@ -58,11 +62,12 @@ new array and in the new array the index of the elements will be shuffled (rando
 Make sure it does not the changes the original array.
 
 */
-Array.prototype.myMap = function(cb) {
-  this.reduce((acc, cv) => {
-  acc = acc.concat(cb(cv))
-  return acc;
-  }, [])
+Array.prototype.shuffle = function(cb) {
+  let splice = []
+  for(let i = 0; i < this.length; i++){
+    splice.push(this.splice(Math.floor(Math.random(this.length), 1)))
+  }
+  return splice
 }
 // Test to check the shuffle method (It will return different output every time you call)
 console.log(numbers.shuffle());
@@ -76,11 +81,14 @@ new array and it should only contain unique elements in the array.
 Unique means no element should come multiple times.
 */
 
-Array.prototype.myMap = function(cb) {
-  this.reduce((acc, cv) => {
-  acc = acc.concat(cb(cv))
-  return acc;
-  }, [])
+Array.prototype.unique = function() {
+  let newArray = [];
+  for(let i = 0; i < this.length; i++){
+    if(!newArray.includes(this[i])) {
+      newArray.push(this[i])
+    }
+  }
+  return newArray
 }
 
 // Test to check the unique method (It will return different output every time you call)
@@ -95,11 +103,15 @@ console.log(strings.unique()); // ['h', 'e', 'l', 'o', 'w', 'r', 'd']
 array that will contain only element that is common in both the array.
 */
 
-Array.prototype.myMap = function(cb) {
-  this.reduce((acc, cv) => {
-  acc = acc.concat(cb(cv))
-  return acc;
-  }, [])
+Array.prototype.intersection = function(array) {
+  filter =  this.filter(item => array.includes(item))
+    let newArray = [];
+  for(let i = 0; i < filter.length; i++){
+    if(!newArray.includes(filter[i])) {
+      newArray.push(filter[i])
+    }
+  }
+  return newArray
 }
 
 // Test to check the shuffle method (It will return different output every time you call)
@@ -111,11 +123,15 @@ console.log(strings.intersection('heyworld'.split(''))); // ['h', 'e', 'o', 'w',
 and split the array into groups the length of size. If array can't be split evenly, the final
 chunk will be the remaining elements. `length` should default to 1.
 */
-Array.prototype.myMap = function(cb) {
-  this.reduce((acc, cv) => {
-  acc = acc.concat(cb(cv))
-  return acc;
-  }, [])
+Array.prototype.chunk = function(length = 1) {
+  let arr = []
+  for (let index = 0; this.length > 1; index++) {
+    arr.push(this.splice(0,length))
+    if (length > this.length) {
+      arr.push(this.splice(0,1))
+    }
+  }
+  return arr;
 }
 
 // Test to check the shuffle method (It will return different output every time you call)
