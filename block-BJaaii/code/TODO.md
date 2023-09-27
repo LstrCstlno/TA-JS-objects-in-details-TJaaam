@@ -30,6 +30,39 @@ Getter
 #### Test
 
 ```js
+class Stack {
+    constructor(){
+        this.arr = [];
+    }
+    push(value){
+        this.arr.push(value)
+    }
+    pop(){
+        this.arr.pop()
+    }
+    peek(i = this.arr.length-1){
+        return this.arr[i]
+    }
+    reverse(){
+        return this.arr.sort((a,b) => b-a)
+    }
+    isEmpty(){
+        if(this.arr.length > 0){
+            return false
+        }else{
+            return true
+        }
+    }
+    displayStack(){
+        return this.arr.toString()
+    }
+    get length(){
+        return this.arr.length
+    }
+}
+```
+
+```js
 let myStack = new Stack();
 myStack.push('One');
 myStack.push('Two');
@@ -65,6 +98,36 @@ Getter
 - `length`: returns the current length of the stack.
 
 #### Test
+
+```js
+class Queue{
+    constructor(){
+        this.arr = [];
+    }
+    enqueue(item){
+        this.arr.unshift(item)
+    }
+    dequeue(){
+        this.arr.pop()
+    }
+    peek(index = 0){
+        return this.array[index]
+    }
+    isEmpty(){
+        if(this.arr.length > 0){
+            return false
+        }else{
+             return true
+        }
+    }
+    displayQueue(){
+        return this.arr.toString()
+    }
+    get length(){
+    return this.arr.length
+    }
+}
+```
 
 ```js
 let atmQueue = new Queue();
