@@ -50,10 +50,27 @@ class Book{
     }
 }
 
+
+
+
+
 let firstbook = new Book("hexxenheimer", "the burning witches", "666");
 
 let mybooks = new BookList(document.querySelector(".root"))
 
-mybooks.add("Hexenhammer", "The Burning Witches", "666")
 
-mybooks.add("Deliver us", "Inflames", "666")
+let form = document.querySelector("form")
+let nameElm = form.elements.title;
+let authorElm = form.elements.author;
+let isbnElm = form.elements.isbn;
+
+
+function handleSubmit(event) {
+    event.preventDefault();
+    let name = nameElm.value;
+    let author = authorElm.value;
+    let isbn = isbnElm.value;
+    mybooks.add(name,author,isbn);
+}
+
+form.addEventListener("submit",handleSubmit);
