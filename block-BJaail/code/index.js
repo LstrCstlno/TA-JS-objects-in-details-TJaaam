@@ -70,7 +70,9 @@ function handleSubmit(event) {
     let name = nameElm.value;
     let author = authorElm.value;
     let isbn = isbnElm.value;
-    mybooks.add(name,author,isbn);
+    if(name != "" && author != "" && isbn != ""){
+        mybooks.add(name,author,isbn);
+    }
 }
 
 form.addEventListener("submit",handleSubmit);
